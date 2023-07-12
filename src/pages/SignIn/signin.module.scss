@@ -2,6 +2,7 @@
 
 .authorization {
   display: flex;
+  position: relative;
   flex-direction: column;
   align-items: center;
   justify-content: center;
@@ -10,29 +11,58 @@
   &__text {
     font-weight: bold;
     margin-top: 20px;
+    display: flex;
+    gap: 10px;
+
+    &_info {
+      display: inline-flex;
+      justify-content: center;
+      align-items: center;
+      background-color: #aaddff;
+      color: white;
+      border-radius: 50%;
+      height: 15px;
+      width: 15px;
+      font-size: 14px;
+      cursor: pointer;
+    }
   }
 
-	&__avatar {
-		background-image: url('../../images/user-sign-in.png');
-		background-repeat: no-repeat;
-		background-size: contain;
-		border: 1px solid;
-		width: 160px;
-		height: 160px;
-	}
+  &__avatar {
+    background-image: url("../../images/login-icon.jpg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    border: 1px solid;
+    width: 160px;
+    height: 160px;
+  }
 
   &__form {
     display: inherit;
     flex-direction: column;
     width: 200px;
 
-		&_input {
-			padding: 5px;
-			margin-bottom: 20px;
-			border: 1px solid;
-			border-radius: 5px;
-			text-align: center;
-		}
+    &_input {
+      padding: 5px;
+      margin-bottom: 20px;
+      border: 1px solid;
+      border-radius: 5px;
+      text-align: center;
+    }
+
+    &_warning {
+      position: absolute;
+      display: flex;
+      bottom: 100px;
+      box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px,
+        rgba(0, 0, 0, 0.23) 0px 3px 6px;
+      border: 1px solid black;
+      color: darkcyan;
+      background-color: white;
+      padding: 2px;
+      width: 250px;
+      font-size: 12px;
+      text-align: center;
+    }
   }
 }
-

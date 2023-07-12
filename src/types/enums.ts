@@ -6,6 +6,7 @@ export enum WarningMessages {
   MORE_THAN_ALLOWED = "It is not possible to order more books than are in stock",
   LESS_THAN_ALLOWED = "It is not possible to order less than 1 unit of the book",
   NO_MORE = "There are no more products left",
+  LOGIN_SIZE = "Your username should contain between 4 and 16 characters",
 }
 
 export enum OptionType {

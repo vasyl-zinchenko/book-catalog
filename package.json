@@ -1,6 +1,6 @@
 {
   "name": "book-catalog",
-  "homepage": "https://github.com/vasyl-zinchenko/book-catalog.git",
+  "homepage": "https://vasyl-zinchenko.github.io/book-catalog",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

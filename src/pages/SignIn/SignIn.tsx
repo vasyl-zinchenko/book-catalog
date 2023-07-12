@@ -1,12 +1,15 @@
 import styles from "./signin.module.scss";
 import { UserContext } from "../../context/UserContext";
-import { useContext, useState, useCallback, useMemo } from "react";
+import { useContext, useState, useCallback } from "react";
 import { BaseButton } from "../../components/ui/BaseButton";
+import { WarningMessages } from "../../types/enums";
+import { CSSTransition } from "react-transition-group";
 
 export const SignIn = () => {
-  const { username, setUsername } = useContext(UserContext);
+  const { setUsername } = useContext(UserContext);
   const [inputValue, setInputValue] = useState<string>("");
-  const [isDisabledButton, setIsDisabledButton] = useState(true);
+  const [isDisabledButton, setIsDisabledButton] = useState<boolean>(true);
+  const [isHovered, setIsHovered] = useState<boolean>(false);
 
   const handleSubmit = useCallback(
     (event: React.ChangeEvent<HTMLFormElement>) => {
@@ -32,7 +35,30 @@ export const SignIn = () => {
   return (
     <div className={styles.authorization}>
       <div className={styles.authorization__avatar}></div>
-      <span className={styles.authorization__text}> Username </span>
+      <CSSTransition
+        in={isHovered}
+        timeout={300}
+        classNames='alert'
+        unmountOnExit
+      >
+        <p className={styles.authorization__form_warning}>
+          {WarningMessages.LOGIN_SIZE}
+        </p>
+      </CSSTransition>
+      <span className={styles.authorization__text}>
+        Username
+        <span
+          onMouseEnter={() => {
+            setIsHovered(true);
+          }}
+          onMouseLeave={() => {
+            setIsHovered(false);
+          }}
+          className={styles.authorization__text_info}
+        >
+          ℹ
+        </span>
+      </span>
       <form className={styles.authorization__form} onSubmit={handleSubmit}>
         <input
           className={styles.authorization__form_input}
@@ -40,6 +66,7 @@ export const SignIn = () => {
           placeholder='type Username'
           value={inputValue}
         />
+
         <BaseButton isDisabledButton={isDisabledButton} text='Sign-In' />
       </form>
     </div>
