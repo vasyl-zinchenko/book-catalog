@@ -1,0 +1,45 @@
+@import "../../../styles/main.scss";
+
+.cart_icon__modal {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  box-sizing: border-box;
+  padding: 15px;
+  width: 260px;
+  background-color: ghostwhite;
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  position: fixed;
+  right: 5%;
+  top: 70px;
+
+  @media (min-width: 768px) {
+    right: 20%;
+    top: 70px;
+  }
+
+  &_actions {
+    display: flex;
+    gap: 10px;
+    justify-content: space-between;
+  }
+
+  &_content {
+    display: flex;
+    justify-content: space-between;
+
+    & > span {
+      line-height: 1;
+      cursor: pointer;
+      transition: 0.2s;
+
+      &:hover {
+        color: red;
+      }
+    }
+  }
+  &_button {
+    background-color: rgb(107 154 63);
+    padding: 4px;
+  }
+}

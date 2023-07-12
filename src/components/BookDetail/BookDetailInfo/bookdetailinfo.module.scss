@@ -1,0 +1,63 @@
+@import "../../../styles/main.scss";
+
+.card_info {
+  display: inherit;
+  grid-area: info;
+  flex-direction: column;
+  order: 2;
+  padding: 10px 0 50px;
+
+  @media (min-width: 1024px) {
+    height: fit-content;
+    margin-right: auto;
+    gap: 15px;
+  }
+
+  & > h1 {
+    font-size: 16px;
+
+    @media (min-width: 1024px) {
+      font-size: 18px;
+    }
+    @media (min-width: 1220px) {
+      font-size: 28px;
+    }
+  }
+
+  &__row {
+    display: grid;
+    grid-template-columns: 0.5fr 1fr;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
+    border-bottom: 0.5px solid rgb(226, 225, 225);
+
+    @media (min-width: 425px) {
+      padding: 10px 0;
+    }
+
+    @media (min-width: 1024px) {
+      padding: 0;
+      order: 2;
+    }
+
+    & > span:nth-child(1) {
+      font-weight: 600;
+    }
+
+    & > span:nth-child(2) {
+      display: flex;
+      justify-content: start;
+    }
+  }
+  &__description {
+    margin-top: 20px;
+
+    & > span {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 10px;
+    }
+  }
+}

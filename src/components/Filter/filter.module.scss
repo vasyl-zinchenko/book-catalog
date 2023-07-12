@@ -1,0 +1,94 @@
+@import "../../styles/main.scss";
+
+.filter_container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 20px 0;
+
+  @media (min-width: 425px) {
+    display: grid;
+    grid-template-columns: 1fr auto;
+    gap: 10px;
+    margin: 20px 0;
+    display: flex;
+    gap: 20px;
+  }
+
+  @media (min-width: 768px) {
+    gap: 40px;
+  }
+}
+
+.booklist_input {
+  display: flex;
+  justify-content: space-between;
+  padding: 3px 5px;
+  border: 1px solid gray;
+
+  @media (min-width: 425px) {
+    width: 200px;
+  }
+
+  @media (min-width: 525px) {
+    width: 250px;
+  }
+
+  &__field {
+    font-size: 12px;
+    border: 1px solid transparent;
+    outline: none;
+    width: -webkit-fill-available;
+  }
+  &__icon {
+    display: flex;
+    align-items: center;
+    line-height: 0;
+    color: #269dff;
+
+    &_search {
+      rotate: 190deg;
+      font-size: 24px;
+      margin-bottom: 5px;
+    }
+
+    &_cancel {
+      cursor: pointer;
+    }
+  }
+}
+
+.booklist_select {
+  display: flex;
+  justify-content: space-between;
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding-left: 5px;
+  box-sizing: border-box;
+}
+
+select {
+  appearance: none;
+  width: 80px;
+  height: 23px;
+  border: 1px solid gray;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  background-image: url("../../icons/select_arrow.jpg");
+  background-repeat: no-repeat;
+  background-position: calc(100% - 0px) center;
+  background-size: contain;
+  padding: 0 10px 0 5px;
+  font-size: 12px;
+
+  @media (min-width: 425px) {
+    width: 120px;
+    font-size: 12px;
+  }
+}
+
+option {
+  font-size: 12px;
+  padding: 10px;
+}

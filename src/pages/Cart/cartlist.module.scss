@@ -1,0 +1,75 @@
+@import "../../styles/main.scss";
+
+.cart {
+  &__button_wrapper,
+  &__total {
+    display: flex;
+    width: fit-content;
+  }
+
+  &__button_wrapper {
+    margin-left: auto;
+    margin-bottom: 20px;
+  }
+
+  &__total {
+    margin: 20px 0 50px auto;
+  }
+
+  &__headline {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+}
+
+
+
+.empty_cart {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  margin: 10% auto;
+
+  & > div > button {
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  }
+
+  &__img {
+    width: 200px;
+    margin-top: 100px;
+    margin-left: -35px;
+  }
+  &__text {
+    font-size: 26px;
+    font-weight: 500;
+    margin-top: 25px;
+    text-align: center;
+  }
+
+  &__down_arrow {
+    position: absolute;
+    top: 25%;
+    left: calc(50% + 15px);
+    font-size: 50px;
+    width: 0;
+    height: 30px;
+    color: #4895ff;
+    border-radius: 2px;
+    animation: jumpInfinite 1.5s infinite;
+    rotate: 180deg;
+  }
+}
+@keyframes jumpInfinite {
+  0% {
+    margin-top: 0;
+  }
+  50% {
+    margin-top: 20px;
+  }
+  100% {
+    margin-top: 0;
+  }
+}

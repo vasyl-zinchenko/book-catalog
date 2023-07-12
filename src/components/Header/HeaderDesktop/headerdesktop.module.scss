@@ -1,0 +1,59 @@
+@import "../../../styles/main.scss";
+
+.header {
+  border-bottom: 1px solid;
+  padding: 10px 0;
+  display: none;
+  position: sticky;
+  top: 0;
+  background-color: #322e2f;
+  margin-bottom: 10px;
+  z-index: 1;
+}
+
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1440px;
+  padding: 0 24px;
+  margin: auto;
+
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+  }
+
+  &__title {
+    color: white;
+  }
+
+  &__username {
+    color: white;
+  }
+
+  &__profile_img {
+    display: flex;
+    background-color: #12a4d9;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    line-height: 0;
+    font-weight: bolder;
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+  }
+
+  &__exit {
+    margin: 0 15px;
+  }
+}
+
+@media (min-width: 768px) {
+  .header {
+    display: block;
+  }
+}

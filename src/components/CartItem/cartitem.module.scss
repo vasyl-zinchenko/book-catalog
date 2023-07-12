@@ -1,0 +1,110 @@
+@import "../../styles/main.scss";
+
+.cart_item {
+  display: flex;
+  border: 1px rgba(229, 231, 235) solid;
+  flex-direction: column;
+  margin-bottom: -1px;
+  transition: 0.3s;
+
+  // &:hover {
+  //   box-shadow: rgba(17, 17, 26, 0.05) 0px 1px 0px, rgba(17, 17, 26, 0.1) 0px 0px 8px;
+  // }
+
+  @media (min-width: 1024px) {
+    flex-direction: row;
+    align-items: center;
+    display: grid;
+    grid-template-columns: 2fr 2fr 0.5fr;
+    grid-template-areas: "section-title section-price delete";
+  }
+
+  &__section_title {
+    display: grid;
+    align-items: start;
+    grid-template-areas: "image title delete";
+    grid-template-columns: 55px auto 0.5fr;
+
+    @media (min-width: 1024px) {
+      display: flex;
+      grid-template-areas: none;
+      grid-area: section-title;
+      align-items: center;
+      margin-right: 20px;
+      width: 300px;
+    }
+  }
+
+  &__section_price {
+    display: grid;
+    grid-template-areas: "count price";
+    grid-template-columns: 2fr auto;
+    min-width: 130px;
+
+    @media (min-width: 1024px) {
+      grid-area: section-price;
+    }
+  }
+
+  &__image {
+    height: 60px;
+    padding: 5px 10px 5px 5px;
+    grid-area: image;
+
+    @media (min-width: 768px) {
+      height: 80px;
+    }
+  }
+  &__title {
+    display: flex;
+    position: relative;
+    font-size: 14px;
+    padding-top: 5px;
+    grid-area: title;
+    font-weight: 600;
+
+    &:hover {
+      text-decoration: underline;
+    }
+
+    @media (min-width: 768px) {
+      margin-left: 20px;
+    }
+  }
+  &__count {
+    grid-area: count;
+    padding: 5px;
+    font-size: 14px;
+  }
+
+  &__price {
+    grid-area: price;
+    padding-right: 5px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: start;
+  }
+
+  &__delete {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px #e9c9c9 solid;
+    background-color: lightgray;
+    border-radius: 5px;
+    padding: 10px;
+    margin: 5px;
+    width: 20px;
+    height: 20px;
+    margin-left: auto;
+    font-size: 14px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background-color: red;
+      color: white;
+    }
+  }
+}
