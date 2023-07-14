@@ -70,14 +70,11 @@ export function BookProvider({ children }: { children?: ReactNode }) {
       const response = await fetch(BASE_URL);
       if (!response.ok) {
         setErrorMessage(ErrorMessages.LOAD_BOOKS);
-        console.log("erg");
         setIsError(true);
       }
 
       const data = await response.json();
-
       setBooks(data);
-      console.log("ok");
     } catch (error: any) {
       setIsError(true);
       setErrorMessage(ErrorMessages.LOAD_BOOKS);

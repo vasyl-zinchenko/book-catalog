@@ -37,7 +37,7 @@ export const SignIn = () => {
       <div className={styles.authorization__avatar}></div>
       <CSSTransition
         in={isHovered}
-        timeout={300}
+        timeout={100}
         classNames='alert'
         unmountOnExit
       >

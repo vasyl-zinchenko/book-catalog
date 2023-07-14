@@ -4,7 +4,7 @@ import styles from "./headerdesktop.module.scss";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../context/UserContext";
 import { CartIcon } from "../../CartIcon";
-import { Router } from '../../../types/enums';
+import { Router } from "../../../types/enums";
 
 export const HeaderDesktop = () => {
   const { username, setUsername } = useContext(UserContext);

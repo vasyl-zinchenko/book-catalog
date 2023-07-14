@@ -2,8 +2,7 @@ import { Dispatch, SetStateAction, useEffect } from "react";
 import styles from "./purchasesitem.module.scss";
 import { CSSTransition } from "react-transition-group";
 import { BaseButton } from "../../ui/BaseButton";
-import { useNavigate } from "react-router-dom";
-import successIcon from "../../../images/success-icon.png";
+import successIcon from "../../../images/success-icon.jpg";
 import { SuccesMessages } from '../../../types/enums';
 
 

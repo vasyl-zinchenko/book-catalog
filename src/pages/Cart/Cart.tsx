@@ -7,7 +7,7 @@ import { useLocation, useSearchParams } from "react-router-dom";
 import { PriceCounter } from "../../components/PriceCounter";
 import { CartItem } from "../../components/CartItem";
 import { BaseButton } from "../../components/ui/BaseButton";
-import emptyShopCart from "../../images/empty_shopping_cart.png";
+import emptyShopCart from "../../images/empty_shopping_cart.jpg";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { SuccesMessages } from "../../types/enums";
