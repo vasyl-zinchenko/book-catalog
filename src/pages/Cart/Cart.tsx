@@ -1,20 +1,17 @@
 import styles from "./cartlist.module.scss";
 import "../../styles/main.scss";
 import { BookContext } from "../../context/BooksContext";
-import { useContext, useEffect, useState, useCallback, useMemo } from "react";
-import { BookItem } from "../../components/BookItem";
-import { useLocation, useSearchParams } from "react-router-dom";
-import { PriceCounter } from "../../components/PriceCounter";
+import { useContext, useState } from "react";
 import { CartItem } from "../../components/CartItem";
 import { BaseButton } from "../../components/ui/BaseButton";
 import emptyShopCart from "../../images/empty_shopping_cart.jpg";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
-import { SuccesMessages } from "../../types/enums";
 import { ModalPurchasedItem } from "../../components/modals/PurchasedItem";
+import { Router } from '../../types/enums';
 
 export const Cart = () => {
-  const { cartList, books, setCartList } = useContext(BookContext);
+  const { cartList, setCartList } = useContext(BookContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const navigate = useNavigate();
 
@@ -41,7 +38,6 @@ export const Cart = () => {
               onClick={handlePurchase}
             />
           </div>
-          {/* <button>Purchase</button> */}
           <TransitionGroup component={null}>
             {cartList.map((book) => (
               <CSSTransition key={book.id} timeout={500} classNames='item'>
@@ -66,7 +62,7 @@ export const Cart = () => {
             textColor='white'
             backgroundColor='#4895ff'
             onClick={() => {
-              navigate("/books");
+              navigate(Router.BOOKS);
             }}
           />
           <div className={styles.empty_cart__down_arrow}>⇪</div>

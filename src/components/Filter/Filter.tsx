@@ -6,8 +6,7 @@ import { useSearchParams } from "react-router-dom";
 import { OptionType } from "../../types/enums";
 
 export const Filter = () => {
-  const { books, setFilteredBook, isLoading, isError } =
-    useContext(BookContext);
+  const { books, setFilteredBook } = useContext(BookContext);
   const [searchParams, setSearchParams] = useSearchParams();
   const sort = searchParams.get("price") || "";
   const query = searchParams.get("query") || "";

@@ -29,7 +29,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
   },
   "eslintConfig": {
     "extends": [
@@ -43,6 +44,12 @@
     "@types/jest": "^29.5.2",
     "@types/react-transition-group": "^4.4.6",
     "@types/testing-library__react": "^10.2.0",
+    "@typescript-eslint/eslint-plugin": "^5.61.0",
+    "@typescript-eslint/parser": "^5.61.0",
+    "@vitejs/plugin-react": "^4.0.1",
+    "eslint": "^8.44.0",
+    "eslint-plugin-react-hooks": "^5.0.0-canary-546fe4681-20230713",
+    "eslint-plugin-react-refresh": "^0.4.1",
     "gh-pages": "^5.0.0",
     "jest": "^29.5.0",
     "ts-jest": "^29.1.1"
@@ -60,5 +67,3 @@
     ]
   }
 }
-
-

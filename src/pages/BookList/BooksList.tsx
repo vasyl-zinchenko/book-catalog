@@ -1,15 +1,13 @@
 import styles from "./bookslist.module.scss";
 import { BookContext } from "../../context/BooksContext";
-import { useContext, useState, useCallback, useMemo, useEffect } from "react";
+import { useContext, useState, useEffect } from "react";
 import { BookItem } from "../../components/BookItem";
-import { useLocation, useSearchParams } from "react-router-dom";
-import classNames from "classnames";
 import { Filter } from "../../components/Filter";
 import { Loader } from "../../components/Loader";
 import { WarningMessage } from "../../components/Error";
 
 export const BooksList = () => {
-  const { filteredBook, isError, errorMessage, loadData, isLoading, setIsLoading } =
+  const { filteredBook, isError, errorMessage, loadData } =
     useContext(BookContext);
   const [isLocalLoading, setIsLocalLoading] = useState(true);
 
@@ -18,7 +16,7 @@ export const BooksList = () => {
     loadData().finally(() => {
       setIsLocalLoading(false);
     });
-  }, []);
+  }, [loadData]);
 
   return (
     <>

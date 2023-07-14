@@ -3,6 +3,7 @@ import styles from "./addeitem.module.scss";
 import { CSSTransition } from "react-transition-group";
 import { BaseButton } from "../../ui/BaseButton";
 import { useNavigate } from "react-router-dom";
+import { Router } from '../../../types/enums';
 
 interface Props {
   setIsOpenCartModal: Dispatch<SetStateAction<boolean>>;
@@ -27,7 +28,7 @@ export const ModalAddedItem: React.FC<Props> = ({
   });
 
   const handleProceedToCheckout = () => {
-    navigate("/cart");
+    navigate(Router.CART);
   };
 
   return (

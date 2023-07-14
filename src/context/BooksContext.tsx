@@ -4,6 +4,7 @@ import React, {
   Dispatch,
   ReactNode,
   SetStateAction,
+  useCallback,
   useEffect,
   useMemo,
   useState,
@@ -40,7 +41,9 @@ export const BookContext = React.createContext<Context>({
   setIsError: () => undefined,
   errorMessage: "",
   setErrorMessage: () => undefined,
-  loadData: async () => {},
+  loadData: async () => {
+    return Promise.reject("loadData function is not implemented");
+  },
 });
 
 export function BookProvider({ children }: { children?: ReactNode }) {
@@ -63,7 +66,7 @@ export function BookProvider({ children }: { children?: ReactNode }) {
     localStorage.setItem("cartList", JSON.stringify(cartList));
   }, [cartList]);
 
-  const loadData = async () => {
+  const loadData = useCallback(async () => {
     try {
       setIsLoading(true);
       setIsError(false);
@@ -73,16 +76,16 @@ export function BookProvider({ children }: { children?: ReactNode }) {
         setIsError(true);
       }
 
-      const data = await response.json();
+      const data = (await response.json()) as Book[];
       setBooks(data);
-    } catch (error: any) {
+    } catch (error: unknown) {
       setIsError(true);
       setErrorMessage(ErrorMessages.LOAD_BOOKS);
-      console.log(error.message);
     } finally {
       setIsLoading(false);
     }
-  };
+  }, []);
+
 
   const contextValue = useMemo(() => {
     return {
@@ -100,7 +103,7 @@ export function BookProvider({ children }: { children?: ReactNode }) {
       setErrorMessage,
       loadData,
     };
-  }, [books, cartList, isLoading, isError, filteredBook, errorMessage]);
+  }, [books, cartList, isLoading, isError, filteredBook, errorMessage, loadData]);
 
   return (
     <BookContext.Provider value={contextValue}>{children}</BookContext.Provider>

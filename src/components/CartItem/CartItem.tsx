@@ -1,6 +1,6 @@
 import styles from "./cartitem.module.scss";
 import { BookContext } from "../../context/BooksContext";
-import { useContext } from "react";
+import { useCallback, useContext } from "react";
 import type { Book } from "../../types/books";
 import { useMediaQuery } from "react-responsive";
 import noImage from "../../images/no_img.jpg";
@@ -12,13 +12,14 @@ interface Props {
 }
 
 export const CartItem: React.FC<Props> = ({ book }) => {
-  const { cartList, setCartList } = useContext(BookContext);
+  const { setCartList } = useContext(BookContext);
   const isLaptopScreen = useMediaQuery({ query: "(min-width: 1024px)" });
 
-  function removeBook() {
-    const books = cartList.filter(({ id }) => id !== book.id);
-    setCartList(books);
-  }
+  const removeBook = useCallback(() => {
+    setCartList((prevCartList) =>
+      prevCartList.filter(({ id }) => id !== book?.id)
+    );
+  }, [book?.id, setCartList]);
 
   return (
     <div className={styles.cart_item} key={book.id}>
@@ -47,7 +48,7 @@ export const CartItem: React.FC<Props> = ({ book }) => {
         <div className={styles.cart_item__count}>count: {book.count}</div>
 
         <div className={styles.cart_item__price} style={{ textAlign: "end" }}>
-          Total price: ${(+book.count! * book.price).toFixed(2)}
+          Total price: ${(+book.count * book.price).toFixed(2)}
         </div>
       </div>
       {isLaptopScreen && (

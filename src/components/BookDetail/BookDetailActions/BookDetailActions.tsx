@@ -14,7 +14,7 @@ import { BaseButton } from "../../ui/BaseButton";
 import { WarningMessages } from "../../../types/enums";
 
 interface Props {
-  currentBook: Book | null;
+  currentBook: Book;
   count: number | string;
   setCount: Dispatch<SetStateAction<number | string>>;
   setIsOpenCartModal: Dispatch<SetStateAction<boolean>>;
@@ -33,6 +33,11 @@ export const BookDetailActions: React.FC<Props> = ({
   const [countValue, setCountValue] = useState<number | string>(1);
   const [isCountValueSet, setIsCountValueSet] = useState<boolean>(false);
 
+  useEffect(() => {
+    if (currentBook && typeof currentBook.id === "number") {
+      setCurrentItem({ ...currentBook });
+    }
+  }, [currentBook]);
   useEffect(() => {
     if (cartList[currentBookIndex]?.count) {
       setIsCountValueSet(true);
@@ -89,13 +94,13 @@ export const BookDetailActions: React.FC<Props> = ({
     []
   );
 
+  const existingBookIndex = useMemo(() => {
+    return cartList.findIndex((book) => book.id === currentItem?.id);
+  }, [cartList, currentItem?.id]);
+
   const addBookToCart = useCallback(() => {
     if (currentItem) {
       currentItem.isVisibleMessage = true;
-
-      const existingBookIndex = cartList.findIndex(
-        (book) => book.id === currentItem.id
-      );
 
       if (existingBookIndex !== -1) {
         const updatedCartList = [...cartList];
@@ -109,7 +114,14 @@ export const BookDetailActions: React.FC<Props> = ({
     }
     setCountValue(1);
     setIsOpenCartModal(true);
-  }, [currentItem, setIsOpenCartModal, countValue, cartList, setCartList]);
+  }, [
+    currentItem,
+    setIsOpenCartModal,
+    existingBookIndex,
+    cartList,
+    countValue,
+    setCartList,
+  ]);
 
   const showCountInStock = useMemo(() => {
     if (cartList[currentBookIndex]?.amount === 0) {
@@ -117,14 +129,13 @@ export const BookDetailActions: React.FC<Props> = ({
     } else if (!cartList[currentBookIndex]?.amount) {
       return currentBook?.amount;
     }
-
     return (
-      +cartList[currentBookIndex]?.amount! - +cartList[currentBookIndex]?.count
+      +cartList[currentBookIndex].amount! - +cartList[currentBookIndex]?.count
     );
   }, [cartList, currentBook?.amount, currentBookIndex]);
 
   useEffect(() => {
-    if (currentBook?.totalPrice! < 1) {
+    if (currentBook && currentBook.totalPrice! < 1) {
       setErrorMessage(WarningMessages.LESS_THAN_ALLOWED);
     } else if (
       Number(countValue) > showCountInStock! &&
@@ -134,7 +145,13 @@ export const BookDetailActions: React.FC<Props> = ({
     } else if (showCountInStock === 0) {
       setErrorMessage(WarningMessages.NO_MORE);
     } else setErrorMessage("");
-  }, [count, countValue, currentBook?.totalPrice, showCountInStock]);
+  }, [
+    count,
+    countValue,
+    currentBook,
+    currentBook?.totalPrice,
+    showCountInStock,
+  ]);
 
   const isDisabledButton = useMemo(
     () => Number(countValue) > showCountInStock! || Number(countValue) < 1,
@@ -145,7 +162,7 @@ export const BookDetailActions: React.FC<Props> = ({
     <div className={styles.card_action}>
       <div className={styles.card_action__wrapper}>
         <span className={styles.card_action__stock}>
-          In stock: {showCountInStock}
+          In stock: <span data-testid='stock'>{showCountInStock}</span>
         </span>
         <div className={styles.card_action__char}>
           <span>Price, $</span>

@@ -3,7 +3,6 @@ import noImage from "../../images/no_img.jpg";
 import { BaseButton } from "../ui/BaseButton";
 import type { Book } from "../../types/books";
 import { Router } from "../../types/enums";
-import { useMemo } from "react";
 
 interface Props {
   book: Book;

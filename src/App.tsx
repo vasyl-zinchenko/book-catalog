@@ -4,7 +4,7 @@ import { SignIn } from "./pages/SignIn";
 import { BooksList } from "./pages/BookList";
 import { Cart } from "./pages/Cart";
 import { BookDetail } from "./pages/BookDetail";
-import { Navigate, redirect, useNavigate } from "react-router-dom";
+import { Navigate } from "react-router-dom";
 import { Header } from "./components/Header";
 
 import { Route, Routes } from "react-router-dom";
@@ -18,8 +18,6 @@ import { Router } from "./types/enums";
 ></link>;
 
 function App() {
-  let navigate = useNavigate();
-
   return (
     <>
       <Header />
@@ -29,7 +27,7 @@ function App() {
             <Route element={<PrivateRoutes />}>
               <Route path='*' element={<NotFound />} />
               <Route
-                path='/'
+                path={Router.HOME}
                 element={<Navigate to={Router.BOOKS} replace />}
               />
               <Route path={Router.BOOKS}>

@@ -7,6 +7,7 @@ import React, {
   useEffect,
 } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { Router } from '../types/enums';
 
 interface Context {
   username: string;
@@ -19,16 +20,16 @@ export const UserContext = React.createContext<Context>({
 });
 
 export function UserProvider({ children }: { children?: ReactNode }) {
-   const [username, setUsername] = useState<string>(() => {
-     const storedUsername = localStorage.getItem("username");
-     return storedUsername || "";
-   });
+  const [username, setUsername] = useState<string>(() => {
+    const storedUsername = localStorage.getItem("username");
+    return storedUsername || "";
+  });
   const navigate = useNavigate();
   const location = useLocation();
 
   useEffect(() => {
-    if (username && location.pathname === "/signin") {
-      navigate("/books");
+    if (username && location.pathname === Router.SIGNIN) {
+      navigate(Router.BOOKS);
     }
   }, [username, location, navigate]);
 
@@ -39,18 +40,11 @@ export function UserProvider({ children }: { children?: ReactNode }) {
     }
   }, []);
 
-  // useEffect(() => {
-  //   const storedUsername = localStorage.getItem("username");
-  //   if (!storedUsername) {
-  //     localStorage.setItem("username", username);
-  //   }
-  // }, [username]);
-
-	  useEffect(() => {
-      if (!localStorage.getItem("username")) {
-        localStorage.setItem("username", username);
-      }
-    }, [username]);
+  useEffect(() => {
+    if (!localStorage.getItem("username")) {
+      localStorage.setItem("username", username);
+    }
+  }, [username]);
 
   const contextValue = useMemo(() => {
     return {

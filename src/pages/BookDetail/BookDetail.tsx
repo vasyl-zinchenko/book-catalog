@@ -8,8 +8,6 @@ import { BookDetailInfo } from "../../components/BookDetail/BookDetailInfo";
 import { BookDetailActions } from "../../components/BookDetail/BookDetailActions";
 import { useMediaQuery } from "react-responsive";
 import noImage from "../../images/no_img.jpg";
-import { BaseButton } from "../../components/ui/BaseButton";
-import { CSSTransition } from "react-transition-group";
 import { NotFound } from "../NotFound";
 import { ModalAddedItem } from "../../components/modals/AddedItem";
 import { Loader } from "../../components/Loader";
@@ -27,20 +25,20 @@ export const BookDetail = () => {
     loadData().finally(() => {
       setIsLocalLoading(false);
     });
-  }, []);
+  }, [loadData]);
 
-  const currentBook = useMemo(() => {
-    const book = bookId
-      ? books.find((book) => book.id === parseInt(bookId))
-      : null;
+
+	const currentBook = useMemo(() => {
+    const book = books.find((book) => book.id === parseInt(bookId!));
     return book
       ? {
           ...book,
           count: count,
-          totalPrice: +(+count! * book.price).toFixed(2),
+          totalPrice: Number((Number(count) * book.price).toFixed(2)),
         }
       : null;
   }, [bookId, books, count]);
+
 
   const bookIsExisted = useMemo(() => {
     if (currentBook && Object.keys(currentBook).length !== 0) {
@@ -74,12 +72,14 @@ export const BookDetail = () => {
               description={currentBook?.description}
             />
 
-            <BookDetailActions
-              currentBook={currentBook}
-              count={count}
-              setCount={setCount}
-              setIsOpenCartModal={setIsOpenCartModal}
-            />
+            {currentBook && (
+              <BookDetailActions
+                currentBook={currentBook}
+                count={count}
+                setCount={setCount}
+                setIsOpenCartModal={setIsOpenCartModal}
+              />
+            )}
           </div>
           {isLaptopScreen && (
             <div className={styles.card__description}>
