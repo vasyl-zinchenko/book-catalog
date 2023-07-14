@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/book-catalog/static/css/main.63ea5a56.css",
-    "main.js": "/book-catalog/static/js/main.89b5ed7c.js",
+    "main.js": "/book-catalog/static/js/main.44254bc4.js",
     "static/js/787.66bd2996.chunk.js": "/book-catalog/static/js/787.66bd2996.chunk.js",
     "static/media/TTTravels-Light.ttf": "/book-catalog/static/media/TTTravels-Light.a352a5270863e74646ea.ttf",
     "static/media/TTTravels-Regular.ttf": "/book-catalog/static/media/TTTravels-Regular.92a0c3030c288ad87583.ttf",
@@ -12,11 +12,11 @@
     "static/media/cart.svg": "/book-catalog/static/media/cart.5a1c3c755c07e59db7d65be6bc8d8bfb.svg",
     "index.html": "/book-catalog/index.html",
     "main.63ea5a56.css.map": "/book-catalog/static/css/main.63ea5a56.css.map",
-    "main.89b5ed7c.js.map": "/book-catalog/static/js/main.89b5ed7c.js.map",
+    "main.44254bc4.js.map": "/book-catalog/static/js/main.44254bc4.js.map",
     "787.66bd2996.chunk.js.map": "/book-catalog/static/js/787.66bd2996.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.63ea5a56.css",
-    "static/js/main.89b5ed7c.js"
+    "static/js/main.44254bc4.js"
   ]
 }
