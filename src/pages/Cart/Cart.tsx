@@ -10,7 +10,6 @@ import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ModalPurchasedItem } from "../../components/modals/PurchasedItem";
 import { Router } from "../../types/enums";
 import { Book } from "../../types/books";
-import { Loader } from "../../components/Loader";
 
 export const Cart = () => {
   const { cartList, setCartList } = useContext(BookContext);
@@ -70,7 +69,6 @@ export const Cart = () => {
           </span>
         </div>
       )}
-      {isLoading && <Loader />}
       {cartList.length < 1 && !isOpenModal && !isLoading && (
         <section className={styles.empty_cart}>
           <BaseButton
