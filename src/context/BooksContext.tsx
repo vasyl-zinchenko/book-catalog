@@ -55,14 +55,6 @@ export function BookProvider({ children }: { children?: ReactNode }) {
   const [errorMessage, setErrorMessage] = useState<string>("");
 
   useEffect(() => {
-    const storedCart = localStorage.getItem("cartList");
-    if (storedCart) {
-      const parsedCartList = JSON.parse(storedCart) as Book[];
-      setCartList(parsedCartList);
-    }
-  }, []);
-
-  useEffect(() => {
     localStorage.setItem("cartList", JSON.stringify(cartList));
   }, [cartList]);
 
@@ -86,7 +78,6 @@ export function BookProvider({ children }: { children?: ReactNode }) {
     }
   }, []);
 
-
   const contextValue = useMemo(() => {
     return {
       books,
@@ -103,7 +94,15 @@ export function BookProvider({ children }: { children?: ReactNode }) {
       setErrorMessage,
       loadData,
     };
-  }, [books, cartList, isLoading, isError, filteredBook, errorMessage, loadData]);
+  }, [
+    books,
+    cartList,
+    isLoading,
+    isError,
+    filteredBook,
+    errorMessage,
+    loadData,
+  ]);
 
   return (
     <BookContext.Provider value={contextValue}>{children}</BookContext.Provider>

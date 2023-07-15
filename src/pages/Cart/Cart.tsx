@@ -1,18 +1,21 @@
 import styles from "./cartlist.module.scss";
 import "../../styles/main.scss";
 import { BookContext } from "../../context/BooksContext";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { CartItem } from "../../components/CartItem";
 import { BaseButton } from "../../components/ui/BaseButton";
 import emptyShopCart from "../../images/empty_shopping_cart.jpg";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ModalPurchasedItem } from "../../components/modals/PurchasedItem";
-import { Router } from '../../types/enums';
+import { Router } from "../../types/enums";
+import { Book } from "../../types/books";
+import { Loader } from "../../components/Loader";
 
 export const Cart = () => {
   const { cartList, setCartList } = useContext(BookContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
+  const [isLoading, setIsLoading] = useState(true);
   const navigate = useNavigate();
 
   function handlePurchase() {
@@ -20,6 +23,18 @@ export const Cart = () => {
     localStorage.removeItem("cartList");
     setCartList([]);
   }
+
+  useEffect(() => {
+    const loadCartList = () => {
+      const loadedCartList = JSON.parse(
+        localStorage.getItem("cartList") || "[]"
+      ) as Book[];
+      setCartList(loadedCartList);
+      setIsLoading(false);
+    };
+
+    loadCartList();
+  }, [setCartList]);
 
   return (
     <>
@@ -55,7 +70,8 @@ export const Cart = () => {
           </span>
         </div>
       )}
-      {cartList.length < 1 && !isOpenModal && (
+      {isLoading && <Loader />}
+      {cartList.length < 1 && !isOpenModal && !isLoading && (
         <section className={styles.empty_cart}>
           <BaseButton
             text='Put some books'

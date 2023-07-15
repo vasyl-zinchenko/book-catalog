@@ -1,0 +1,29 @@
+@mixin onMobileL {
+  @media (min-width: 425px) {
+    @content;
+  }
+}
+
+@mixin onMobileXL {
+  @media (min-width: 525px) {
+    @content;
+  }
+}
+
+@mixin onTablet {
+  @media (min-width: 768px) {
+    @content;
+  }
+}
+
+@mixin onLaptop {
+  @media (min-width: 1024px) {
+    @content;
+  }
+}
+
+@mixin onLaptopM {
+  @media (min-width: 1220px) {
+    @content;
+  }
+}

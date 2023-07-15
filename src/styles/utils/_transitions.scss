@@ -1,0 +1,22 @@
+.item-exit {
+  opacity: 0;
+}
+.item-exit-active {
+	background-color: red;
+  transition: all 300ms ease-in;
+}
+
+.alert-enter {
+  opacity: 0;
+}
+.alert-enter-active {
+  opacity: 1;
+  transition: opacity 300ms, transform 300ms;
+}
+.alert-exit {
+  opacity: 1;
+}
+.alert-exit-active {
+  opacity: 0;
+  transition: opacity 300ms, transform 300ms;
+}

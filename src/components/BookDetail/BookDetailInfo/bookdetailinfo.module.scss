@@ -7,7 +7,7 @@
   order: 2;
   padding: 10px 0 50px;
 
-  @media (min-width: 1024px) {
+  @include onLaptop {
     height: fit-content;
     margin-right: auto;
     gap: 15px;
@@ -16,10 +16,10 @@
   & > h1 {
     font-size: 16px;
 
-    @media (min-width: 1024px) {
+    @include onLaptop {
       font-size: 18px;
     }
-    @media (min-width: 1220px) {
+    @include onLaptopM {
       font-size: 28px;
     }
   }
@@ -33,11 +33,11 @@
     padding: 5px 0;
     border-bottom: 0.5px solid rgb(226, 225, 225);
 
-    @media (min-width: 425px) {
+    @include onMobileL {
       padding: 10px 0;
     }
 
-    @media (min-width: 1024px) {
+    @include onLaptop {
       padding: 0;
       order: 2;
     }
