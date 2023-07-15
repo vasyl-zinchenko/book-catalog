@@ -70,7 +70,6 @@
 select {
   appearance: none;
   width: 130px;
-  height: 23px;
   border: 1px solid gray;
   border-radius: 5px;
   border: none;
@@ -79,7 +78,7 @@ select {
   background-repeat: no-repeat;
   background-position: calc(100% - 0px) center;
   background-size: contain;
-  padding: 0 10px 0 5px;
+  padding: 5px 10px 5px 5px;
   font-size: 12px;
 
   @include onMobileL {
