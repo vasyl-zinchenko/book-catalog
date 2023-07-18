@@ -1,46 +1,40 @@
-# Getting Started with Create React App
+<h2>Book catalog</h2>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+[DEMO LINK](https://vasyl-zinchenko.github.io/book-catalog)
 
-## Available Scripts
+---
 
-In the project directory, you can run:
+## Features
 
-### `npm start`
+- <img width=20 height=20 src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png">&nbsp;&nbsp;&nbsp;React, React Hooks
+- <img width=20 height=20 src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4c/Typescript_logo_2020.svg/2048px-Typescript_logo_2020.svg.png">&nbsp;&nbsp;&nbsp; TypeScript
+- <img width=20 height=20 src="https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Sass_Logo_Color.svg/1280px-Sass_Logo_Color.svg.png">&nbsp;&nbsp;&nbsp; SCSS/SASS
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+---
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+Here you can:
 
-### `npm test`
+- Sign in
+<img src="https://img001.prntscr.com/file/img001/KYuiw-15STCnqv5m4qXetw.png">
+ 
+- Browse the list of books
+- Filter and sort books
+<img src="https://img001.prntscr.com/file/img001/imH4ihE1RoeKFl4M1SKXVg.png">
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+- View detailed information about a chosen book
+- Add a specific quantity of books to your cart
+<img src="https://img001.prntscr.com/file/img001/m254ghzAQsicOwXB6oXVQg.png">
 
-### `npm run build`
+- Finalize your purchase within the cart
+<img src="https://img001.prntscr.com/file/img001/xkgMg8wsRLGuF5gqGg99aQ.png">
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+<h3>Try it Yourself</h3>
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+- clone the forked repo to be running
+- open the project
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Then open a new terminal and enter:
 
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+1. cd book-catalog
+2. npm i
+3. npm run start
