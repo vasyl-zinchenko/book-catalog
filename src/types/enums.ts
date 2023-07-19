@@ -1,3 +1,9 @@
+interface ButtonStyle {
+  text: string;
+  backgroundColor: string;
+  textColor: string;
+}
+
 export enum ErrorMessages {
   LOAD_BOOKS = "Failed to load books",
 }
@@ -29,12 +35,45 @@ export enum SuccesMessages {
   ADD_BOOKS = "Comment added successfully",
 }
 
-// export enum PostType {
-//   AllPosts = "All posts",
-//   UserPosts = "Your posts",
-// }
-
-// export enum SortType {
-//   New = "new",
-//   Old = "old",
-// }
+export const Buttons: { [key: string]: ButtonStyle } = {
+  ADD: {
+    text: "Add to cart",
+    backgroundColor: "#43b02a",
+    textColor: "white",
+  },
+  SIGN_IN: {
+    text: "Sign-In",
+    backgroundColor: "#f0f0f0",
+    textColor: "black",
+  },
+  SIGN_OUT: {
+    text: "Sign-Out",
+    backgroundColor: "#f0f0f0",
+    textColor: "black",
+  },
+  VIEW: {
+    text: "View",
+    backgroundColor: "#f0f0f0",
+    textColor: "black",
+  },
+  PROCEED: {
+    text: "Proceed to checkout",
+    backgroundColor: "#6ab02a",
+    textColor: "white",
+  },
+  OK: {
+    text: "Ok",
+    textColor: "white",
+    backgroundColor: "#43b02a",
+  },
+  PURCHASE: {
+    text: "Purchase",
+    textColor: "white",
+    backgroundColor: "#43b02a",
+  },
+  PUT_BOOKS: {
+    text: "Put some books",
+    textColor: "white",
+    backgroundColor: "#4895ff",
+  },
+};

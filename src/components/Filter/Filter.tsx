@@ -1,7 +1,7 @@
 import { BookContext } from "../../context/BooksContext";
 import { useContext, useCallback, useMemo, useEffect } from "react";
 import classNames from "classnames";
-import styles from "./filter.module.scss";
+import styles from "./Filter.module.scss";
 import { useSearchParams } from "react-router-dom";
 import { OptionType } from "../../types/enums";
 

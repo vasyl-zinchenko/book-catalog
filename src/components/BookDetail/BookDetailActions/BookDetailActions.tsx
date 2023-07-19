@@ -1,4 +1,4 @@
-import styles from "./bookdetailactions.module.scss";
+import styles from "./BookDetailActions.module.scss";
 import {
   Dispatch,
   SetStateAction,
@@ -11,7 +11,7 @@ import {
 import type { Book } from "../../../types/books";
 import { BookContext } from "../../../context/BooksContext";
 import { BaseButton } from "../../ui/BaseButton";
-import { WarningMessages } from "../../../types/enums";
+import { Buttons, WarningMessages } from "../../../types/enums";
 
 interface Props {
   currentBook: Book;
@@ -220,10 +220,10 @@ export const BookDetailActions: React.FC<Props> = ({
         )}
         <BaseButton
           onClick={addBookToCart}
-          text='Add to cart'
+          text={Buttons.ADD.text}
           isDisabledButton={isDisabledButton}
-          backgroundColor='#43b02a'
-          textColor='white'
+          backgroundColor={Buttons.ADD.backgroundColor}
+          textColor={Buttons.ADD.textColor}
         />
       </div>
     </div>

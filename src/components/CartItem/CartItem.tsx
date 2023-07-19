@@ -1,4 +1,4 @@
-import styles from "./cartitem.module.scss";
+import styles from "./CartItem.module.scss";
 import { BookContext } from "../../context/BooksContext";
 import { useCallback, useContext } from "react";
 import type { Book } from "../../types/books";

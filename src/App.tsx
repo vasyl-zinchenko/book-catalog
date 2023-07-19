@@ -5,11 +5,11 @@ import { BooksList } from "./pages/BookList";
 import { Cart } from "./pages/Cart";
 import { BookDetail } from "./pages/BookDetail";
 import { Navigate } from "react-router-dom";
-import { Header } from "./components/Header";
+import { Header } from "./components/layout/Header";
 
 import { Route, Routes } from "react-router-dom";
 import { PrivateRoutes } from "./utils/PrivateRoute";
-import { Footer } from "./components/Footer";
+import { Footer } from "./components/layout/Footer";
 import { NotFound } from "./pages/NotFound";
 import { Router } from "./types/enums";
 <link

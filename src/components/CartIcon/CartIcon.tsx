@@ -1,6 +1,6 @@
 import { BookContext } from "../../context/BooksContext";
 import { useContext, useMemo } from "react";
-import styles from "./carticon.module.scss";
+import styles from "./CartIcon.module.scss";
 import { Link } from "react-router-dom";
 import cartIcon from "../../icons/cart.svg";
 import { Router } from '../../types/enums';

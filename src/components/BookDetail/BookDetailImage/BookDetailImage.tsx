@@ -1,4 +1,4 @@
-import styles from "./bookdetailimage.module.scss";
+import styles from "./BookDetailImage.module.scss";
 
 interface Props {
   image?: string;

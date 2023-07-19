@@ -1,9 +1,9 @@
-@import "../../styles/main.scss";
+@import "../../../styles/main.scss";
 
 .footer {
   display: flex;
   justify-content: center;
-  background-color: #322e2f;
+  background-color: $layoutBackgroundColor;
   color: white;
   padding:20px;
   margin-top: auto;

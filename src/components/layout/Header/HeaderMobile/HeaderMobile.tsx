@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect } from "react";
-import styles from "./headermobile.module.scss";
-import cartIcon from "../../../icons/cart.svg";
+import styles from "./HeaderMobile.module.scss";
+import cartIcon from "../../../../icons/cart.svg";
 import { NavLink } from "react-router-dom";
-import { UserContext } from "../../../context/UserContext";
+import { UserContext } from "../../../../context/UserContext";
 import classNames from "classnames";
-import { CartIcon } from "../../CartIcon";
-import { BookContext } from "../../../context/BooksContext";
-import { Router } from "../../../types/enums";
+import { CartIcon } from "../../../CartIcon";
+import { BookContext } from "../../../../context/BooksContext";
+import { Router } from "../../../../types/enums";
 
 export const HeaderMobile = () => {
   const { username, setUsername } = useContext(UserContext);

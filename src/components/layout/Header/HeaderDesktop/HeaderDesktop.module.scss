@@ -1,4 +1,4 @@
-@import "../../../styles/main.scss";
+@import "../../../../styles/main.scss";
 
 .header {
   border-bottom: 1px solid;
@@ -6,7 +6,7 @@
   display: none;
   position: sticky;
   top: 0;
-  background-color: #322e2f;
+  background-color: $layoutBackgroundColor;
   margin-bottom: 10px;
   z-index: 1;
 }

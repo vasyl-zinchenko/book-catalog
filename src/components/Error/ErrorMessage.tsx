@@ -1,5 +1,5 @@
 import { ReactNode } from "react";
-import styles from "./errormessage.module.scss";
+import styles from "./ErrorMessage.module.scss";
 
 interface WarningMessageProps {
   children: ReactNode;

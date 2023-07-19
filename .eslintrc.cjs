@@ -15,6 +15,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
   },
   plugins: ["react-refresh"],
+  ignorePatterns: ["webpack.config.js"],
   rules: {
     "react-refresh/only-export-components": "off",
     "@typescript-eslint/no-non-null-assertion": "off",

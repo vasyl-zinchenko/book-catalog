@@ -16,7 +16,14 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "noUnusedLocals": true,
-    "noUnusedParameters": true
+    "noUnusedParameters": true,
+    "baseUrl": ".",
+    "paths": {
+      "@": ["./src"],
+      "@/*": ["./src/*"],
+      "@components": ["./src/components"],
+      "@Context/*": ["./src/context/*"]
+    }
   },
-  "include": ["src"]
+  "include": ["src","webpack.config.js"]
 }

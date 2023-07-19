@@ -1,9 +1,9 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
-import styles from "./addeitem.module.scss";
+import styles from "./AddedItem.module.scss";
 import { CSSTransition } from "react-transition-group";
 import { BaseButton } from "../../ui/BaseButton";
 import { useNavigate } from "react-router-dom";
-import { Router } from '../../../types/enums';
+import { Buttons, Router } from "../../../types/enums";
 
 interface Props {
   setIsOpenCartModal: Dispatch<SetStateAction<boolean>>;
@@ -46,9 +46,9 @@ export const ModalAddedItem: React.FC<Props> = ({
         <div className={styles.cart_icon__modal_actions}>
           <BaseButton
             onClick={handleProceedToCheckout}
-            text='Proceed to checkout'
-            backgroundColor='#6ab02a'
-            textColor='white'
+            text={Buttons.PROCEED.text}
+            backgroundColor={Buttons.PROCEED.backgroundColor}
+            textColor={Buttons.PROCEED.textColor}
           />
         </div>
       </div>

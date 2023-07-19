@@ -1,4 +1,4 @@
-import styles from "./cartlist.module.scss";
+import styles from "./CartList.module.scss";
 import "../../styles/main.scss";
 import { BookContext } from "../../context/BooksContext";
 import { useContext, useEffect, useState } from "react";
@@ -8,7 +8,7 @@ import emptyShopCart from "../../images/empty_shopping_cart.jpg";
 import { useNavigate } from "react-router-dom";
 import { CSSTransition, TransitionGroup } from "react-transition-group";
 import { ModalPurchasedItem } from "../../components/modals/PurchasedItem";
-import { Router } from "../../types/enums";
+import { Buttons, Router } from "../../types/enums";
 import { Book } from "../../types/books";
 
 export const Cart = () => {
@@ -46,9 +46,9 @@ export const Cart = () => {
         <div className={styles.cart__wrapper}>
           <div className={styles.cart__button_wrapper}>
             <BaseButton
-              text='Purchase'
-              textColor='white'
-              backgroundColor='#43b02a'
+              text={Buttons.PURCHASE.text}
+              textColor={Buttons.PURCHASE.textColor}
+              backgroundColor={Buttons.PURCHASE.backgroundColor}
               onClick={handlePurchase}
             />
           </div>
@@ -72,9 +72,9 @@ export const Cart = () => {
       {cartList.length < 1 && !isOpenModal && !isLoading && (
         <section className={styles.empty_cart}>
           <BaseButton
-            text='Put some books'
-            textColor='white'
-            backgroundColor='#4895ff'
+            text={Buttons.PUT_BOOKS.text}
+            textColor={Buttons.PUT_BOOKS.textColor}
+            backgroundColor={Buttons.PUT_BOOKS.backgroundColor}
             onClick={() => {
               navigate(Router.BOOKS);
             }}

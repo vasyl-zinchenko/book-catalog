@@ -1,6 +1,6 @@
 import React, { MouseEventHandler, useMemo } from "react";
-import { Link } from "react-router-dom"; // додано імпорт напряму
-import styles from "./basebutton.module.scss";
+import { Link } from "react-router-dom";
+import styles from "./BaseButton.module.scss";
 
 interface Props {
   text: string;

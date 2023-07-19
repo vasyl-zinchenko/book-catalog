@@ -1,4 +1,4 @@
-import styles from "./bookslist.module.scss";
+import styles from "./BooksList.module.scss";
 import { BookContext } from "../../context/BooksContext";
 import { useContext, useState, useEffect } from "react";
 import { BookItem } from "../../components/BookItem";

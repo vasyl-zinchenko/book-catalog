@@ -1,4 +1,4 @@
-import styles from "./bookdetailinfo.module.scss";
+import styles from "./BookDetailInfo.module.scss";
 import { useMediaQuery } from "react-responsive";
 
 interface Props {

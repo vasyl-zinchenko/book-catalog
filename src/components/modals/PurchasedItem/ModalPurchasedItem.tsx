@@ -1,10 +1,9 @@
 import { Dispatch, SetStateAction, useEffect } from "react";
-import styles from "./purchasesitem.module.scss";
+import styles from "./PurchasedItem.module.scss";
 import { CSSTransition } from "react-transition-group";
 import { BaseButton } from "../../ui/BaseButton";
 import successIcon from "../../../images/success-icon.jpg";
-import { SuccesMessages } from '../../../types/enums';
-
+import { Buttons, SuccesMessages } from "../../../types/enums";
 
 interface Props {
   setIsOpenModal: Dispatch<SetStateAction<boolean>>;
@@ -15,7 +14,6 @@ export const ModalPurchasedItem: React.FC<Props> = ({
   setIsOpenModal,
   isOpenModal,
 }) => {
-
   useEffect(() => {
     if (isOpenModal) {
       const timeoutID = setTimeout(() => {
@@ -26,7 +24,6 @@ export const ModalPurchasedItem: React.FC<Props> = ({
       };
     }
   });
-
 
   return (
     <CSSTransition
@@ -45,9 +42,9 @@ export const ModalPurchasedItem: React.FC<Props> = ({
           <div>{SuccesMessages.PURCHASE_BOOKS}</div>
           <div className={styles.modal__button_wrapper}>
             <BaseButton
-              text='Ok'
-              textColor='white'
-              backgroundColor='#43b02a'
+              text={Buttons.OK.text}
+              textColor={Buttons.OK.textColor}
+              backgroundColor={Buttons.OK.backgroundColor}
               onClick={() => {
                 setIsOpenModal(false);
               }}

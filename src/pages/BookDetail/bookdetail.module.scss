@@ -17,7 +17,6 @@
     margin-top: 24px;
     flex-direction: row;
     justify-content: space-between;
-    // grid-template-areas: "image info action";
     gap: 15px;
   }
   @include onLaptopM {
@@ -43,6 +42,11 @@
     & > p:nth-child(1) {
       font-weight: 600;
       margin-bottom: 5px;
+    }
+
+    & > p:nth-child(2) {
+      line-height: 1.5;
+			text-align: justify;
     }
   }
 }

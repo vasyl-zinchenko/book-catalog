@@ -1,8 +1,8 @@
-import styles from "./signin.module.scss";
+import styles from "./SignIn.module.scss";
 import { UserContext } from "../../context/UserContext";
 import { useContext, useState, useCallback } from "react";
 import { BaseButton } from "../../components/ui/BaseButton";
-import { WarningMessages } from "../../types/enums";
+import { Buttons, WarningMessages } from "../../types/enums";
 import { CSSTransition } from "react-transition-group";
 
 export const SignIn = () => {
@@ -67,7 +67,12 @@ export const SignIn = () => {
           value={inputValue}
         />
 
-        <BaseButton isDisabledButton={isDisabledButton} text='Sign-In' />
+        <BaseButton
+          isDisabledButton={isDisabledButton}
+          text={Buttons.SIGN_IN.text}
+          backgroundColor={Buttons.SIGN_IN.backgroundColor}
+          textColor={Buttons.SIGN_IN.textColor}
+        />
       </form>
     </div>
   );

@@ -1,5 +1,5 @@
 import { useContext, useEffect, useMemo, useState } from "react";
-import styles from "./bookdetail.module.scss";
+import styles from "./BookDetail.module.scss";
 import "../../styles/main.scss";
 import { useParams } from "react-router-dom";
 import { BookContext } from "../../context/BooksContext";
