@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/book-catalog/static/css/main.41df954a.css",
-    "main.js": "/book-catalog/static/js/main.32baf14a.js",
+    "main.css": "/book-catalog/static/css/main.ba51b19c.css",
+    "main.js": "/book-catalog/static/js/main.4b297960.js",
     "static/js/787.66bd2996.chunk.js": "/book-catalog/static/js/787.66bd2996.chunk.js",
     "static/media/TTTravels-Light.ttf": "/book-catalog/static/media/TTTravels-Light.a352a5270863e74646ea.ttf",
     "static/media/TTTravels-Regular.ttf": "/book-catalog/static/media/TTTravels-Regular.92a0c3030c288ad87583.ttf",
@@ -11,12 +11,12 @@
     "static/media/login-icon.jpg": "/book-catalog/static/media/login-icon.5e387b151ac845cc9890.jpg",
     "static/media/cart.svg": "/book-catalog/static/media/cart.5a1c3c755c07e59db7d65be6bc8d8bfb.svg",
     "index.html": "/book-catalog/index.html",
-    "main.41df954a.css.map": "/book-catalog/static/css/main.41df954a.css.map",
-    "main.32baf14a.js.map": "/book-catalog/static/js/main.32baf14a.js.map",
+    "main.ba51b19c.css.map": "/book-catalog/static/css/main.ba51b19c.css.map",
+    "main.4b297960.js.map": "/book-catalog/static/js/main.4b297960.js.map",
     "787.66bd2996.chunk.js.map": "/book-catalog/static/js/787.66bd2996.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.41df954a.css",
-    "static/js/main.32baf14a.js"
+    "static/css/main.ba51b19c.css",
+    "static/js/main.4b297960.js"
   ]
 }
