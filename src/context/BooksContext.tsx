@@ -41,15 +41,15 @@ export const BookContext = React.createContext<Context>({
   setIsError: () => undefined,
   errorMessage: "",
   setErrorMessage: () => undefined,
-  loadData: async () => {
-    return Promise.reject("loadData function is not implemented");
-  },
+  loadData: () => Promise.resolve(),
 });
 
 export function BookProvider({ children }: { children?: ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const [books, setBooks] = useState<Book[]>([]);
-  const [cartList, setCartList] = useState<Book[]>([]);
+  const [cartList, setCartList] = useState(
+    JSON.parse(localStorage.getItem("cartList") || "[]") as Book[]
+  );
   const [isError, setIsError] = useState<boolean>(false);
   const [filteredBook, setFilteredBook] = useState<Book[]>([]);
   const [errorMessage, setErrorMessage] = useState<string>("");

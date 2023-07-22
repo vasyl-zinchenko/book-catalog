@@ -29,26 +29,9 @@ export const BookDetailActions: React.FC<Props> = ({
   const { cartList, setCartList } = useContext(BookContext);
   const [errorMessage, setErrorMessage] = useState<string>("");
   const [currentBookIndex, setCurrentBookIndex] = useState<number>(0);
-  const [currentItem, setCurrentItem] = useState<Book | null>(null);
   const [countValue, setCountValue] = useState<number | string>(1);
-  const [isCountValueSet, setIsCountValueSet] = useState<boolean>(false);
-
-  useEffect(() => {
-    if (currentBook && typeof currentBook.id === "number") {
-      setCurrentItem({ ...currentBook });
-    }
-  }, [currentBook]);
-  useEffect(() => {
-    if (cartList[currentBookIndex]?.count) {
-      setIsCountValueSet(true);
-    }
-  }, [cartList, currentBookIndex]);
-
-  useEffect(() => {
-    if (!isCountValueSet) {
-      setCountValue(1);
-    }
-  }, [isCountValueSet]);
+  const [isVisibleAddedCount, setIsVisibleAddedCount] =
+    useState<boolean>(false);
 
   const totalPrice = useMemo(() => {
     if (typeof currentBook?.price === "number") {
@@ -62,22 +45,18 @@ export const BookDetailActions: React.FC<Props> = ({
   }, [setCount, countValue]);
 
   useEffect(() => {
+    setIsVisibleAddedCount(false);
+
+    if (cartList[currentBookIndex]) {
+      setIsVisibleAddedCount(true);
+    }
+  }, [cartList, currentBookIndex]);
+
+  useEffect(() => {
     setCurrentBookIndex(
       cartList.findIndex((book) => book.id === currentBook?.id)
     );
   }, [cartList, currentBook?.id]);
-
-  useEffect(() => {
-    if (currentBook && typeof currentBook.id === "number") {
-      setCurrentItem({ ...currentBook });
-    }
-  }, [currentBook]);
-
-  useEffect(() => {
-    if (currentItem) {
-      currentItem.isVisibleMessage = false;
-    }
-  }, [currentItem]);
 
   function increaseCount() {
     setCountValue((prevCount) => Number(prevCount) + 1);
@@ -94,34 +73,21 @@ export const BookDetailActions: React.FC<Props> = ({
     []
   );
 
-  const existingBookIndex = useMemo(() => {
-    return cartList.findIndex((book) => book.id === currentItem?.id);
-  }, [cartList, currentItem?.id]);
-
   const addBookToCart = useCallback(() => {
-    if (currentItem) {
-      currentItem.isVisibleMessage = true;
-
-      if (existingBookIndex !== -1) {
+    if (currentBook) {
+      if (currentBookIndex !== -1) {
         const updatedCartList = [...cartList];
-        updatedCartList[existingBookIndex].count =
-          Number(updatedCartList[existingBookIndex].count) + Number(countValue);
+        updatedCartList[currentBookIndex].count =
+          Number(updatedCartList[currentBookIndex].count) + Number(countValue);
         setCartList(updatedCartList);
       } else {
-        currentItem.count = countValue;
-        setCartList((prevCartList: Book[]) => [...prevCartList, currentItem]);
+        currentBook.count = countValue;
+        setCartList((prevCartList: Book[]) => [...prevCartList, currentBook]);
       }
     }
     setCountValue(1);
     setIsOpenCartModal(true);
-  }, [
-    currentItem,
-    setIsOpenCartModal,
-    existingBookIndex,
-    cartList,
-    countValue,
-    setCartList,
-  ]);
+  }, [currentBook, setIsOpenCartModal, currentBookIndex, cartList, countValue, setCartList]);
 
   const showCountInStock = useMemo(() => {
     if (cartList[currentBookIndex]?.amount === 0) {
@@ -130,7 +96,7 @@ export const BookDetailActions: React.FC<Props> = ({
       return currentBook?.amount;
     }
     return (
-      +cartList[currentBookIndex].amount! - +cartList[currentBookIndex]?.count
+      Number(cartList[currentBookIndex].amount!) - Number(cartList[currentBookIndex]?.count)
     );
   }, [cartList, currentBook?.amount, currentBookIndex]);
 
@@ -207,10 +173,10 @@ export const BookDetailActions: React.FC<Props> = ({
         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
       </div>
       <div className={styles.card_action__button}>
-        {currentBookIndex !== -1 && (
+        {isVisibleAddedCount && (
           <span
             className={`${styles.added} ${
-              cartList[currentBookIndex]?.isVisibleMessage ? styles.isAdded : ""
+              cartList[currentBookIndex] ? styles.isAdded : ""
             }`}
           >
             {`${cartList[currentBookIndex]?.count} ${
@@ -218,6 +184,7 @@ export const BookDetailActions: React.FC<Props> = ({
             } in the cart`}
           </span>
         )}
+
         <BaseButton
           onClick={addBookToCart}
           text={Buttons.ADD.text}

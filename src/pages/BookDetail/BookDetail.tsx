@@ -27,8 +27,7 @@ export const BookDetail = () => {
     });
   }, [loadData]);
 
-
-	const currentBook = useMemo(() => {
+  const currentBook = useMemo(() => {
     const book = books.find((book) => book.id === parseInt(bookId!));
     return book
       ? {
@@ -38,7 +37,6 @@ export const BookDetail = () => {
         }
       : null;
   }, [bookId, books, count]);
-
 
   const bookIsExisted = useMemo(() => {
     if (currentBook && Object.keys(currentBook).length !== 0) {
