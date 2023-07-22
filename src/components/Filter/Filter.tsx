@@ -124,6 +124,7 @@ export const Filter = () => {
           </span>
         )}
       </section>
+
       <section className={styles.booklist_select}>
         <select name='price' value={sort} onChange={onSortChange}>
           <option value='' disabled>

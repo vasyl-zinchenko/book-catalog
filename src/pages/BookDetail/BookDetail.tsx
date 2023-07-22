@@ -13,7 +13,7 @@ import { ModalAddedItem } from "../../components/modals/AddedItem";
 import { Loader } from "../../components/Loader";
 
 export const BookDetail = () => {
-  const { books, loadData, isLoading } = useContext(BookContext);
+  const { books, loadData } = useContext(BookContext);
   const [count, setCount] = useState<number | string>(1);
   const { bookId } = useParams();
   const isLaptopScreen = useMediaQuery({ query: "(min-width: 1024px)" });
@@ -87,7 +87,7 @@ export const BookDetail = () => {
           )}
         </>
       )}
-      {isLoading && <Loader />}
+      {isLocalLoading && <Loader />}
       {!bookIsExisted && !isLocalLoading && <NotFound />}
     </>
   );

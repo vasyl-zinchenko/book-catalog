@@ -27,3 +27,33 @@
     @content;
   }
 }
+
+%arrowCounter {
+  padding: 0 3px;
+  color: #aaddff;
+  background-color: white;
+  border-top: 1px solid rgb(191, 189, 189);
+  border-right: 1px solid rgb(191, 189, 189);
+	    cursor: pointer;
+    transition: 0.3s;
+
+  &:hover {
+    color: #54b7f8;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+      rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  }
+
+  &:active {
+    background-color: rgb(242, 242, 242);
+  }
+
+  &:disabled {
+    cursor: auto;
+    color: #e0e7ec;
+  }
+}
+
+// .action-buttons {
+//   @extend %arrowCounter;
+//   color: #4285f4;
+// }

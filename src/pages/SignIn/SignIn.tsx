@@ -35,6 +35,7 @@ export const SignIn = () => {
   return (
     <div className={styles.authorization}>
       <div className={styles.authorization__avatar}></div>
+
       <CSSTransition
         in={isHovered}
         timeout={100}
@@ -45,6 +46,7 @@ export const SignIn = () => {
           {WarningMessages.LOGIN_SIZE}
         </p>
       </CSSTransition>
+
       <span className={styles.authorization__text}>
         Username
         <span
@@ -59,6 +61,7 @@ export const SignIn = () => {
           ℹ
         </span>
       </span>
+
       <form className={styles.authorization__form} onSubmit={handleSubmit}>
         <input
           className={styles.authorization__form_input}

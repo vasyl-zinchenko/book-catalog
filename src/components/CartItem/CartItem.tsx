@@ -31,12 +31,14 @@ export const CartItem: React.FC<Props> = ({ book }) => {
             alt={book.title}
           />
         </Link>
+
         <Link
           to={`${Router.BOOKS}/${book.id}`}
           className={styles.cart_item__title}
         >
           {book.title}
         </Link>
+
         {!isLaptopScreen && (
           <div onClick={removeBook} className={styles.cart_item__delete}>
             ✖
@@ -51,6 +53,7 @@ export const CartItem: React.FC<Props> = ({ book }) => {
           Total price: ${(+book.count * book.price).toFixed(2)}
         </div>
       </div>
+
       {isLaptopScreen && (
         <div onClick={removeBook} className={styles.cart_item__delete}>
           ✖

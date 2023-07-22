@@ -3,7 +3,7 @@ import { useContext, useMemo } from "react";
 import styles from "./CartIcon.module.scss";
 import { Link } from "react-router-dom";
 import cartIcon from "../../icons/cart.svg";
-import { Router } from '../../types/enums';
+import { Router } from "../../types/enums";
 
 export const CartIcon = () => {
   const { cartList } = useContext(BookContext);

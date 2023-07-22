@@ -33,11 +33,13 @@ export const BookDetailInfo: React.FC<Props> = ({
         <span>Tags:</span> <span>{tags?.join(", ")}</span>
       </div>
 
-      {!isLaptopScreen && <div className={styles.card_info__description}>
-        <span>Book description</span>
-        <p>{description}</p>
-      </div>}
+      {!isLaptopScreen && (
+        <div className={styles.card_info__description}>
+          <span>Book description</span>
+
+          <p>{description}</p>
+        </div>
+      )}
     </div>
   );
 };
-

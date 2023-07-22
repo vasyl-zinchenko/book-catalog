@@ -8,11 +8,7 @@ interface Props {
 export const BookDetailImage: React.FC<Props> = ({ image, alt }) => {
   return (
     <div className={styles.image_wrapper}>
-      <img
-        className={styles.card_image}
-        src={image}
-        alt={alt}
-      />
+      <img className={styles.card_image} src={image} alt={alt} />
     </div>
   );
 };

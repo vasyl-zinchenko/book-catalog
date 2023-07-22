@@ -4,6 +4,11 @@ interface ButtonStyle {
   textColor: string;
 }
 
+interface Shop {
+  title: string;
+  user: string;
+}
+
 export enum ErrorMessages {
   LOAD_BOOKS = "Failed to load books",
 }
@@ -34,6 +39,11 @@ export enum SuccesMessages {
   PURCHASE_BOOKS = "Purchase was successful",
   ADD_BOOKS = "Comment added successfully",
 }
+
+export const SHOP: Shop = {
+  title: "JS BAND STORE",
+  user: "Vasyl Zinchenko",
+};
 
 export const Buttons: { [key: string]: ButtonStyle } = {
   ADD: {

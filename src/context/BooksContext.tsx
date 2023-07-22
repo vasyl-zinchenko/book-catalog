@@ -19,8 +19,6 @@ interface Context {
   setBooks: Dispatch<SetStateAction<Book[]>>;
   setCartList: Dispatch<SetStateAction<Book[]>>;
   setFilteredBook: Dispatch<SetStateAction<Book[]>>;
-  isLoading: boolean;
-  setIsLoading: Dispatch<SetStateAction<boolean>>;
   isError: boolean;
   setIsError: Dispatch<SetStateAction<boolean>>;
   errorMessage: string;
@@ -35,8 +33,6 @@ export const BookContext = React.createContext<Context>({
   cartList: [],
   setBooks: () => undefined,
   setCartList: () => undefined,
-  isLoading: true,
-  setIsLoading: () => undefined,
   isError: false,
   setIsError: () => undefined,
   errorMessage: "",
@@ -45,7 +41,6 @@ export const BookContext = React.createContext<Context>({
 });
 
 export function BookProvider({ children }: { children?: ReactNode }) {
-  const [isLoading, setIsLoading] = useState(true);
   const [books, setBooks] = useState<Book[]>([]);
   const [cartList, setCartList] = useState(
     JSON.parse(localStorage.getItem("cartList") || "[]") as Book[]
@@ -60,21 +55,17 @@ export function BookProvider({ children }: { children?: ReactNode }) {
 
   const loadData = useCallback(async () => {
     try {
-      setIsLoading(true);
       setIsError(false);
       const response = await fetch(BASE_URL);
       if (!response.ok) {
         setErrorMessage(ErrorMessages.LOAD_BOOKS);
         setIsError(true);
       }
-
       const data = (await response.json()) as Book[];
       setBooks(data);
     } catch (error: unknown) {
       setIsError(true);
       setErrorMessage(ErrorMessages.LOAD_BOOKS);
-    } finally {
-      setIsLoading(false);
     }
   }, []);
 
@@ -84,8 +75,6 @@ export function BookProvider({ children }: { children?: ReactNode }) {
       setBooks,
       cartList,
       setCartList,
-      isLoading,
-      setIsLoading,
       isError,
       setIsError,
       filteredBook,
@@ -94,15 +83,7 @@ export function BookProvider({ children }: { children?: ReactNode }) {
       setErrorMessage,
       loadData,
     };
-  }, [
-    books,
-    cartList,
-    isLoading,
-    isError,
-    filteredBook,
-    errorMessage,
-    loadData,
-  ]);
+  }, [books, cartList, isError, filteredBook, errorMessage, loadData]);
 
   return (
     <BookContext.Provider value={contextValue}>{children}</BookContext.Provider>

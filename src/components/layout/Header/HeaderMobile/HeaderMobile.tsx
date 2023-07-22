@@ -6,7 +6,7 @@ import { UserContext } from "../../../../context/UserContext";
 import classNames from "classnames";
 import { CartIcon } from "../../../CartIcon";
 import { BookContext } from "../../../../context/BooksContext";
-import { Router } from "../../../../types/enums";
+import { Router, SHOP } from "../../../../types/enums";
 
 export const HeaderMobile = () => {
   const { username, setUsername } = useContext(UserContext);
@@ -33,91 +33,89 @@ export const HeaderMobile = () => {
       <header className={styles.header}>
         <nav className={styles.navigation}>
           <NavLink to={Router.BOOKS}>
-            <section className={styles.navigation__title}>
-              JS BAND STORE
-            </section>
+            <section className={styles.navigation__title}>{SHOP.title}</section>
           </NavLink>
+
           {username && (
-            <>
-              <section className={styles.navigation__menu}>
-                <CartIcon />
-                <div
-                  className={styles.menu_toggle}
-                  onClick={() => setIsOpened(!isOpened)}
-                >
-                  ☰
-                </div>
-                <div
-                  className={classNames({ [styles.background]: isOpened })}
-                  onClick={() => setIsOpened(false)}
-                ></div>
-                <div
-                  className={classNames(styles.opened_menu, {
-                    [styles.opened]: isOpened,
-                    opened: isOpened,
-                  })}
-                >
-                  <section className={styles.opened_menu__nav}>
-                    <NavLink
-                      to={Router.BOOKS}
-                      onClick={() => setIsOpened(false)}
-                    >
-                      <section className={styles.navigation__title}>
-                        JS BAND STORE
-                      </section>
-                    </NavLink>
-                    <div
-                      className={styles.menu_toggle}
-                      onClick={() => setIsOpened(!isOpened)}
-                    >
-                      ✖
-                    </div>
-                  </section>
-                  <section className={styles.menu_profile}>
-                    <div className={styles.menu_profile__info}>
-                      <div className={styles.menu_profile__info_picture}>
-                        {username[0].toUpperCase()}
-                      </div>
-                      <div>
-                        <p>Vasyl Zinchenko</p>
+            <section className={styles.navigation__menu}>
+              <CartIcon />
 
-                        <p>{username}</p>
-                      </div>
-                    </div>
-                    <NavLink
-                      to={Router.CART}
-                      onClick={() => setIsOpened(false)}
-                    >
-                      <div className={styles.cart_icon}>
-                        <img src={cartIcon} alt='Cart icon' />
+              <div
+                className={styles.menu_toggle}
+                onClick={() => setIsOpened(!isOpened)}
+              >
+                ☰
+              </div>
 
-                        <span>Cart</span>
+              <div
+                className={classNames({ [styles.background]: isOpened })}
+                onClick={() => setIsOpened(false)}
+              ></div>
 
-                        {cartList.length > 0 && (
-                          <div className={styles.cart_icon__length}>
-                            {cartList.length}
-                          </div>
-                        )}
-                      </div>
-                    </NavLink>
-                  </section>
+              <div
+                className={classNames(styles.opened_menu, {
+                  [styles.opened]: isOpened,
+                  opened: isOpened,
+                })}
+              >
+                <section className={styles.opened_menu__nav}>
+                  <NavLink to={Router.BOOKS} onClick={() => setIsOpened(false)}>
+                    <section className={styles.navigation__title}>
+                      {SHOP.title}
+                    </section>
+                  </NavLink>
 
                   <div
-                    style={{
-                      height: "1px",
-                      background: "grey",
-                      margin: "15px 0",
-                    }}
-                  ></div>
-                  <div
-                    className={styles.menu_profile__exit}
-                    onClick={removeUsername}
+                    className={styles.menu_toggle}
+                    onClick={() => setIsOpened(!isOpened)}
                   >
-                    Sign-Out
+                    ✖
                   </div>
+                </section>
+
+                <section className={styles.menu_profile}>
+                  <div className={styles.menu_profile__info}>
+                    <div className={styles.menu_profile__info_picture}>
+                      {username[0].toUpperCase()}
+                    </div>
+                    <div>
+                      <p>{SHOP.user}</p>
+
+                      <p>{username}</p>
+                    </div>
+                  </div>
+
+                  <NavLink to={Router.CART} onClick={() => setIsOpened(false)}>
+                    <div className={styles.cart_icon}>
+                      <img src={cartIcon} alt='Cart icon' />
+
+                      <span>Cart</span>
+
+                      {cartList.length > 0 && (
+                        <div className={styles.cart_icon__length}>
+                          {cartList.length}
+                        </div>
+                      )}
+                    </div>
+                  </NavLink>
+                </section>
+
+                <div
+                  style={{
+                    height: "1px",
+                    background: "grey",
+                    margin: "15px 0",
+                  }}
+                ></div>
+
+                <div
+                  className={styles.menu_profile__exit}
+                  onClick={removeUsername}
+                >
+                  Sign-Out
                 </div>
-              </section>
-            </>
+              </div>
+            </section>
           )}
         </nav>
       </header>

@@ -27,12 +27,15 @@ export const BooksList = () => {
           <p className={styles.books_list__count}>
             Books: {filteredBook.length}
           </p>
+
           <Filter />
+
           <div className={styles.main}>
             {filteredBook.map((book) => (
               <BookItem book={book} key={book.id} />
             ))}
           </div>
+
           {filteredBook.length === 0 && !isLocalLoading && (
             <p className={styles.books_list__notfound}>
               No books found with the given parameters
@@ -40,6 +43,7 @@ export const BooksList = () => {
           )}
         </>
       )}
+
       {isLocalLoading && <Loader />}
 
       {isError && !isLocalLoading && (

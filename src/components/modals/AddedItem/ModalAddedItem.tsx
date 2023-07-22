@@ -41,8 +41,10 @@ export const ModalAddedItem: React.FC<Props> = ({
       <div className={styles.cart_icon__modal}>
         <div className={styles.cart_icon__modal_content}>
           <p>Item added to your cart</p>
+
           <span onClick={() => setIsOpenCartModal(false)}>✖</span>
         </div>
+
         <div className={styles.cart_icon__modal_actions}>
           <BaseButton
             onClick={handleProceedToCheckout}

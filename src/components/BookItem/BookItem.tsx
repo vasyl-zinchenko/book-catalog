@@ -27,14 +27,18 @@ export const BookItem: React.FC<Props> = ({ book }) => {
         <h2 className={styles.card__title}>
           <strong>{normalizeText(book.title)}</strong>
         </h2>
+
         <span className={styles.card__author}>
           {normalizeText(book.author)}
         </span>
+
         <br />
+
         <div className={styles.card__action}>
           <span>
             <strong>${book.price}</strong>
           </span>
+
           <div>
             <BaseButton
               link={`${Router.BOOKS}/${book.id}`}

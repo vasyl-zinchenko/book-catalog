@@ -4,7 +4,7 @@ import styles from "./HeaderDesktop.module.scss";
 import { Link } from "react-router-dom";
 import { UserContext } from "../../../../context/UserContext";
 import { CartIcon } from "../../../CartIcon";
-import { Buttons, Router } from "../../../../types/enums";
+import { Buttons, Router, SHOP } from "../../../../types/enums";
 
 export const HeaderDesktop = () => {
   const { username, setUsername } = useContext(UserContext);
@@ -18,11 +18,15 @@ export const HeaderDesktop = () => {
     <header className={styles.header}>
       <nav className={styles.navigation}>
         <Link to={Router.BOOKS}>
-          <section className={styles.navigation__title}>JS BAND STORE</section>
+          <section
+            className={styles.navigation__title}
+          >{`${SHOP.title} / ${SHOP.user}`}</section>
         </Link>
+
         {username && (
           <section className={styles.navigation__menu}>
             <CartIcon />
+
             <div className={styles.navigation__exit}>
               <BaseButton
                 onClick={removeUsername}
@@ -31,9 +35,11 @@ export const HeaderDesktop = () => {
                 textColor={Buttons.SIGN_OUT.textColor}
               />
             </div>
+
             <div className={styles.navigation__profile_img}>
               {username[0].toUpperCase()}
             </div>
+
             <span className={styles.navigation__username}>{username}</span>
           </section>
         )}

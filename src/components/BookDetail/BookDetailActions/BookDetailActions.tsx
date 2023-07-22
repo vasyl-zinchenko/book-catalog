@@ -28,7 +28,6 @@ export const BookDetailActions: React.FC<Props> = ({
 }) => {
   const { cartList, setCartList } = useContext(BookContext);
   const [errorMessage, setErrorMessage] = useState<string>("");
-  const [currentBookIndex, setCurrentBookIndex] = useState<number>(0);
   const [countValue, setCountValue] = useState<number | string>(1);
   const [isVisibleAddedCount, setIsVisibleAddedCount] =
     useState<boolean>(false);
@@ -39,6 +38,10 @@ export const BookDetailActions: React.FC<Props> = ({
     }
     return 0;
   }, [countValue, currentBook?.price]);
+
+  const currentBookIndex = useMemo(() => {
+    return cartList.findIndex((book) => book.id === currentBook?.id);
+  }, [cartList, currentBook?.id]);
 
   useEffect(() => {
     setCount(countValue);
@@ -51,12 +54,6 @@ export const BookDetailActions: React.FC<Props> = ({
       setIsVisibleAddedCount(true);
     }
   }, [cartList, currentBookIndex]);
-
-  useEffect(() => {
-    setCurrentBookIndex(
-      cartList.findIndex((book) => book.id === currentBook?.id)
-    );
-  }, [cartList, currentBook?.id]);
 
   function increaseCount() {
     setCountValue((prevCount) => Number(prevCount) + 1);
@@ -87,7 +84,14 @@ export const BookDetailActions: React.FC<Props> = ({
     }
     setCountValue(1);
     setIsOpenCartModal(true);
-  }, [currentBook, setIsOpenCartModal, currentBookIndex, cartList, countValue, setCartList]);
+  }, [
+    currentBook,
+    setIsOpenCartModal,
+    currentBookIndex,
+    cartList,
+    countValue,
+    setCartList,
+  ]);
 
   const showCountInStock = useMemo(() => {
     if (cartList[currentBookIndex]?.amount === 0) {
@@ -96,7 +100,8 @@ export const BookDetailActions: React.FC<Props> = ({
       return currentBook?.amount;
     }
     return (
-      Number(cartList[currentBookIndex].amount!) - Number(cartList[currentBookIndex]?.count)
+      Number(cartList[currentBookIndex].amount!) -
+      Number(cartList[currentBookIndex]?.count)
     );
   }, [cartList, currentBook?.amount, currentBookIndex]);
 
@@ -130,12 +135,16 @@ export const BookDetailActions: React.FC<Props> = ({
         <span className={styles.card_action__stock}>
           In stock: <span data-testid='stock'>{showCountInStock}</span>
         </span>
+
         <div className={styles.card_action__char}>
           <span>Price, $</span>
+
           <span data-testid='price'>{currentBook?.price}</span>
         </div>
+
         <div className={styles.card_action__char}>
           <span>Count</span>
+
           <div className={styles.price_counter}>
             <div className={styles.price_counter__wrapper}>
               <input
@@ -147,6 +156,7 @@ export const BookDetailActions: React.FC<Props> = ({
                 min={1}
                 max={showCountInStock}
               />
+
               <div className={styles.price_counter__arrows}>
                 <button
                   className={styles.price_counter__arrow_up}
@@ -155,6 +165,7 @@ export const BookDetailActions: React.FC<Props> = ({
                 >
                   ▲
                 </button>
+
                 <button
                   className={styles.price_counter__arrow_down}
                   onClick={decreaseCount}
@@ -166,12 +177,15 @@ export const BookDetailActions: React.FC<Props> = ({
             </div>
           </div>
         </div>
+
         <div className={styles.card_action__char}>
           <span>Total price</span>
+
           <span data-testid='total-price-element'>{totalPrice}</span>
         </div>
         {errorMessage && <p className={styles.error}>{errorMessage}</p>}
       </div>
+
       <div className={styles.card_action__button}>
         {isVisibleAddedCount && (
           <span

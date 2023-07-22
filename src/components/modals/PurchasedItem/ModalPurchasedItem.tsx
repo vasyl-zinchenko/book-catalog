@@ -39,7 +39,9 @@ export const ModalPurchasedItem: React.FC<Props> = ({
             src={successIcon}
             alt='success'
           />
+
           <div>{SuccesMessages.PURCHASE_BOOKS}</div>
+					
           <div className={styles.modal__button_wrapper}>
             <BaseButton
               text={Buttons.OK.text}

@@ -24,10 +24,12 @@ export const Cart = () => {
   return (
     <>
       {cartList.length > 0 && <h1 className={styles.cart__headline}>Cart</h1>}
+
       <ModalPurchasedItem
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal}
       />
+
       {cartList.length > 0 && (
         <div className={styles.cart__wrapper}>
           <div className={styles.cart__button_wrapper}>
@@ -38,6 +40,7 @@ export const Cart = () => {
               onClick={handlePurchase}
             />
           </div>
+
           <TransitionGroup component={null}>
             {cartList.map((book) => (
               <CSSTransition key={book.id} timeout={500} classNames='item'>
@@ -45,6 +48,7 @@ export const Cart = () => {
               </CSSTransition>
             ))}
           </TransitionGroup>
+
           <span className={styles.cart__total}>
             <strong>
               Total price: $
@@ -55,6 +59,7 @@ export const Cart = () => {
           </span>
         </div>
       )}
+
       {cartList.length < 1 && !isOpenModal && (
         <section className={styles.empty_cart}>
           <BaseButton
@@ -65,12 +70,15 @@ export const Cart = () => {
               navigate(Router.BOOKS);
             }}
           />
+
           <div className={styles.empty_cart__down_arrow}>⇪</div>
+
           <img
             className={styles.empty_cart__img}
             src={emptyShopCart}
             alt='empty cart'
           />
+
           <p className={styles.empty_cart__text}>Your cart is empty</p>
         </section>
       )}
