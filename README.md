@@ -18,7 +18,7 @@ Here you can:
 <img src="https://img001.prntscr.com/file/img001/KYuiw-15STCnqv5m4qXetw.png">
  
 - Browse the list of books
-- Filter and sort books
+- Filter and sort books while saving query parameters in the URL
 <img src="https://img001.prntscr.com/file/img001/imH4ihE1RoeKFl4M1SKXVg.png">
 
 - View detailed information about a chosen book
