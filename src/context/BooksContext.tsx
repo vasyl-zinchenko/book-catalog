@@ -24,6 +24,7 @@ interface Context {
   errorMessage: string;
   setErrorMessage: Dispatch<SetStateAction<string>>;
   loadData: () => Promise<void>;
+  makeFriendlyUrl: (title: string) => string;
 }
 
 export const BookContext = React.createContext<Context>({
@@ -38,6 +39,7 @@ export const BookContext = React.createContext<Context>({
   errorMessage: "",
   setErrorMessage: () => undefined,
   loadData: () => Promise.resolve(),
+  makeFriendlyUrl: (title: string) => title,
 });
 
 export function BookProvider({ children }: { children?: ReactNode }) {
@@ -69,6 +71,12 @@ export function BookProvider({ children }: { children?: ReactNode }) {
     }
   }, []);
 
+const makeFriendlyUrl = useMemo(() => {
+  return (title: string) => {
+    return title.replace(/[:\s,]+/g, "-").toLowerCase();
+  };
+}, []);
+
   const contextValue = useMemo(() => {
     return {
       books,
@@ -82,8 +90,17 @@ export function BookProvider({ children }: { children?: ReactNode }) {
       errorMessage,
       setErrorMessage,
       loadData,
+      makeFriendlyUrl,
     };
-  }, [books, cartList, isError, filteredBook, errorMessage, loadData]);
+  }, [
+    books,
+    cartList,
+    isError,
+    filteredBook,
+    errorMessage,
+    loadData,
+    makeFriendlyUrl,
+  ]);
 
   return (
     <BookContext.Provider value={contextValue}>{children}</BookContext.Provider>

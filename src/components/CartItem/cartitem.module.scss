@@ -7,7 +7,7 @@
   margin-bottom: -1px;
   transition: 0.3s;
 
-  @media (min-width: 1024px) {
+  @include onLaptop {
     flex-direction: row;
     align-items: center;
     display: grid;
@@ -21,7 +21,7 @@
     grid-template-areas: "image title delete";
     grid-template-columns: 55px auto 0.5fr;
 
-    @media (min-width: 1024px) {
+    @include onLaptop {
       display: flex;
       grid-template-areas: none;
       grid-area: section-title;
@@ -37,7 +37,18 @@
     grid-template-columns: 2fr auto;
     min-width: 130px;
 
-    @media (min-width: 1024px) {
+    @include onLaptop {
+      grid-template-columns: 2fr 1.1fr;
+      grid-area: section-price;
+    }
+
+    @include onLaptop {
+      grid-template-columns: 2fr 1.1fr;
+      grid-area: section-price;
+    }
+
+    @include onLaptopM {
+      grid-template-columns: 2fr 0.9fr;
       grid-area: section-price;
     }
   }
@@ -55,9 +66,9 @@
     display: flex;
     position: relative;
     font-size: 14px;
-    padding-top: 5px;
     grid-area: title;
     font-weight: 600;
+    padding: 5px;
 
     &:hover {
       text-decoration: underline;

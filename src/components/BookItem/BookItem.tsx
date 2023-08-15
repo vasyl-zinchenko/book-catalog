@@ -3,12 +3,15 @@ import noImage from "../../images/no_img.jpg";
 import { BaseButton } from "../ui/BaseButton";
 import type { Book } from "../../types/books";
 import { Buttons, Router } from "../../types/enums";
+import { BookContext } from '../../context/BooksContext';
+import { useContext } from 'react';
 
 interface Props {
   book: Book;
 }
 
 export const BookItem: React.FC<Props> = ({ book }) => {
+	const { makeFriendlyUrl } = useContext(BookContext);
   const normalizeText = (value: string) => {
     return value.length > 24 ? value.slice(0, 24) + "..." : value;
   };
@@ -41,7 +44,7 @@ export const BookItem: React.FC<Props> = ({ book }) => {
 
           <div>
             <BaseButton
-              link={`${Router.BOOKS}/${book.id}`}
+              link={`${Router.BOOKS}/${makeFriendlyUrl(book.title)}`}
               text={Buttons.VIEW.text}
               backgroundColor={Buttons.VIEW.backgroundColor}
               textColor={Buttons.VIEW.textColor}

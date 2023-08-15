@@ -13,7 +13,7 @@ import { ModalAddedItem } from "../../components/modals/AddedItem";
 import { Loader } from "../../components/Loader";
 
 export const BookDetail = () => {
-  const { books, loadData } = useContext(BookContext);
+  const { books, loadData, makeFriendlyUrl } = useContext(BookContext);
   const [count, setCount] = useState<number | string>(1);
   const { bookId } = useParams();
   const isLaptopScreen = useMediaQuery({ query: "(min-width: 1024px)" });
@@ -28,7 +28,7 @@ export const BookDetail = () => {
   }, [loadData]);
 
   const currentBook = useMemo(() => {
-    const book = books.find((book) => book.id === parseInt(bookId!));
+    const book = books.find((book) => makeFriendlyUrl(book.title) === bookId);
     return book
       ? {
           ...book,
@@ -36,7 +36,7 @@ export const BookDetail = () => {
           totalPrice: Number((Number(count) * book.price).toFixed(2)),
         }
       : null;
-  }, [bookId, books, count]);
+  }, [bookId, books, count, makeFriendlyUrl]);
 
   const bookIsExisted = useMemo(() => {
     if (currentBook && Object.keys(currentBook).length !== 0) {

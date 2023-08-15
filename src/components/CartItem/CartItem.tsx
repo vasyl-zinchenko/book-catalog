@@ -12,7 +12,7 @@ interface Props {
 }
 
 export const CartItem: React.FC<Props> = ({ book }) => {
-  const { setCartList } = useContext(BookContext);
+  const { setCartList, makeFriendlyUrl } = useContext(BookContext);
   const isLaptopScreen = useMediaQuery({ query: "(min-width: 1024px)" });
 
   const removeBook = useCallback(() => {
@@ -24,7 +24,7 @@ export const CartItem: React.FC<Props> = ({ book }) => {
   return (
     <div className={styles.cart_item} key={book.id}>
       <div className={styles.cart_item__section_title}>
-        <Link to={`${Router.BOOKS}/${book.id}`}>
+        <Link to={`${Router.BOOKS}/${makeFriendlyUrl(book.title)}`}>
           <img
             className={styles.cart_item__image}
             src={book.image || noImage}
@@ -33,7 +33,7 @@ export const CartItem: React.FC<Props> = ({ book }) => {
         </Link>
 
         <Link
-          to={`${Router.BOOKS}/${book.id}`}
+          to={`${Router.BOOKS}/${makeFriendlyUrl(book.title)}`}
           className={styles.cart_item__title}
         >
           {book.title}
