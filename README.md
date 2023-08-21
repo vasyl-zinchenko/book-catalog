@@ -31,10 +31,9 @@ Here you can:
 <h3>Try it Yourself</h3>
 
 - clone the forked repo to be running
-- open the project
+- open the project: <code>code ./book-catalog</code>
 
 Then open a new terminal and enter:
 
-1. cd book-catalog
-2. npm i
-3. npm run start
+2.  <code>npm i </code>
+3.  <code>npm run start</code>
