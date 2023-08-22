@@ -20,10 +20,11 @@ export const UserContext = React.createContext<Context>({
 });
 
 export function UserProvider({ children }: { children?: ReactNode }) {
-  const [username, setUsername] = useState<string>(() => {
-    const storedUsername = localStorage.getItem("username");
-    return storedUsername || "";
-  });
+  //const [username, setUsername] = useState<string>(() => {
+  //  const storedUsername = localStorage.getItem("username");
+  //  return storedUsername || "";
+  //});
+  const [username, setUsername] = useState<string>(localStorage.getItem("username") || "")
   const navigate = useNavigate();
   const location = useLocation();
 
