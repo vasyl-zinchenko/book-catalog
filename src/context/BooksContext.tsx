@@ -25,6 +25,7 @@ interface Context {
   setErrorMessage: Dispatch<SetStateAction<string>>;
   loadData: () => Promise<void>;
   makeFriendlyUrl: (title: string) => string;
+  totalCartPrice: number;
 }
 
 export const BookContext = React.createContext<Context>({
@@ -40,6 +41,7 @@ export const BookContext = React.createContext<Context>({
   setErrorMessage: () => undefined,
   loadData: () => Promise.resolve(),
   makeFriendlyUrl: (title: string) => title,
+  totalCartPrice: 0,
 });
 
 export function BookProvider({ children }: { children?: ReactNode }) {
@@ -71,11 +73,17 @@ export function BookProvider({ children }: { children?: ReactNode }) {
     }
   }, []);
 
-const makeFriendlyUrl = useMemo(() => {
-  return (title: string) => {
-    return title.replace(/[:\s,]+/g, "-").toLowerCase();
-  };
-}, []);
+  const makeFriendlyUrl = useMemo(() => {
+    return (title: string) => {
+      return title.replace(/[:\s,]+/g, "-").toLowerCase();
+    };
+  }, []);
+
+  const totalCartPrice = useMemo(() => {
+    return Number(cartList
+      .reduce((total, book) => total + (book.totalPrice || 0), 0)
+      .toFixed(2));
+  }, [cartList]);
 
   const contextValue = useMemo(() => {
     return {
@@ -91,6 +99,7 @@ const makeFriendlyUrl = useMemo(() => {
       setErrorMessage,
       loadData,
       makeFriendlyUrl,
+      totalCartPrice,
     };
   }, [
     books,
@@ -100,6 +109,7 @@ const makeFriendlyUrl = useMemo(() => {
     errorMessage,
     loadData,
     makeFriendlyUrl,
+    totalCartPrice,
   ]);
 
   return (

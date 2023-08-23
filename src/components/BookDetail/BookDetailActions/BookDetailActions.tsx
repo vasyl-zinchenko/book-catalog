@@ -74,8 +74,14 @@ export const BookDetailActions: React.FC<Props> = ({
     if (currentBook) {
       if (currentBookIndex !== -1) {
         const updatedCartList = [...cartList];
+
         updatedCartList[currentBookIndex].count =
           Number(updatedCartList[currentBookIndex].count) + Number(countValue);
+
+        updatedCartList[currentBookIndex].totalPrice = Number(
+          Number(updatedCartList[currentBookIndex].count) *
+            updatedCartList[currentBookIndex].price
+        );
         setCartList(updatedCartList);
       } else {
         currentBook.count = countValue;

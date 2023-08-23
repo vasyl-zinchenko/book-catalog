@@ -11,7 +11,7 @@ import { ModalPurchasedItem } from "../../components/modals/PurchasedItem";
 import { Buttons, Router } from "../../types/enums";
 
 export const Cart = () => {
-  const { cartList, setCartList } = useContext(BookContext);
+  const { cartList, setCartList, totalCartPrice } = useContext(BookContext);
   const [isOpenModal, setIsOpenModal] = useState(false);
   const navigate = useNavigate();
 
@@ -24,7 +24,6 @@ export const Cart = () => {
   return (
     <>
       {cartList.length > 0 && <h1 className={styles.cart__headline}>Cart</h1>}
-
       <ModalPurchasedItem
         isOpenModal={isOpenModal}
         setIsOpenModal={setIsOpenModal}
@@ -50,12 +49,7 @@ export const Cart = () => {
           </TransitionGroup>
 
           <span className={styles.cart__total}>
-            <strong>
-              Total price: $
-              {cartList
-                .reduce((total, book) => total + (book.totalPrice || 0), 0)
-                .toFixed(2)}
-            </strong>
+            <strong>Total price: ${totalCartPrice}</strong>
           </span>
         </div>
       )}
